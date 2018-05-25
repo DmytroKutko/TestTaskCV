@@ -1,5 +1,6 @@
 package TestSF;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
@@ -32,38 +33,45 @@ public class Main {
         System.out.println("X" + '\t' + s2);
         System.out.println("-----------------------------");
 
-        int num1 = Integer.parseInt(s1);
-        int num2 = Integer.parseInt(s2);
+        BigInteger ten = BigInteger.valueOf(10);
 
-        int [] mas1 = new int[s1.length()];
-        int [] mas2 = new int[s2.length()];
+        BigInteger num1 = new BigInteger(s1);
+        BigInteger num2 = new BigInteger(s2);
 
-        int sum = 0;
+        BigInteger[] masb1 = new BigInteger[s1.length()];
+        BigInteger[] masb2 = new BigInteger[s2.length()];
 
-        int temp1 = 0;
-        int temp2 = 0;
+        BigInteger sum = BigInteger.valueOf(0);
 
-        int dec1 = 1;
-        int dec2 = 1;
+        BigInteger temp1;
+        BigInteger temp2;
+
+        BigInteger dec1 = BigInteger.valueOf(1);
+        BigInteger dec2 = BigInteger.valueOf(1);
 
         for (int i = 0; i < s1.length(); i++) {
-            temp1 = (num1 % 10) * dec1;
-            num1 /= 10;
-            mas1[i]= temp1;
-            dec1 *= 10;
+
+            temp1 = (num1.remainder(ten).multiply(dec1));
+            num1 = num1.divide(ten);
+            masb1[i] = temp1;
+            dec1 = dec1.multiply(ten);
         }
 
         for (int i = 0; i < s2.length(); i++) {
-            temp2 = (num2 % 10) * dec2;
-            num2 /= 10;
-            mas2[i]= temp2;
-            dec2 *= 10;
+            temp2 = (num2.remainder(ten).multiply(dec2));
+            num2 = num2.divide(ten);
+            masb2[i] = temp2;
+            dec2 = dec2.multiply(ten);
         }
 
-        for (int i = 0; i < mas1.length; i++) {
-            for (int j = 0; j < mas2.length; j++) {
-                sum += mas1[i] * mas2[j];
-                System.out.println(mas1[i] + " * " + mas2[j]);
+        for (int i = 0; i < masb1.length; i++) {
+            for (int j = 0; j < masb2.length; j++) {
+                sum = sum.add(masb1[i].multiply(masb2[j]));
+                System.out.println(masb1[i] + " * " + masb2[j]);
+                if (j < masb2.length -1 || i < masb1.length -1) {
+                    System.out.println("Sum: " + sum + '\n');
+                    System.out.print(" + ");
+                }
             }
         }
         System.out.println("-----------------------------");
