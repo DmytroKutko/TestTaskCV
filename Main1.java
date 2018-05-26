@@ -1,12 +1,23 @@
 package TestSF;
 
+import java.util.Scanner;
+
 public class Main1 {
 
     static String [] result;
     public static void main(String[] args) {
 
-        String st1 = "343";
-        String st2 = "78";
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Введіть першу строку: ");
+        System.out.println();
+        String st1 = sc.next();
+
+        System.out.print("Введіть другу строку: ");
+        System.out.println();
+        String st2 = sc.next();
+
+        sc.close();
 
         String [] arr1 = st1.split("");
         String [] arr2 = st2.split("");
@@ -15,14 +26,14 @@ public class Main1 {
         int temp2 = 0;
         int temp3 = 0;
 
-        int count = st1.length() + st2.length() -1;
+        int count = st1.length() * st2.length() -1;
 
-        int x = st1.length() + st2.length() -1;
+        int x = st1.length() * st2.length() -1;
         int y = 0;
 
-        String [] [] arr = new String[st1.length() + st2.length()][st1.length() + st2.length()];
+        String [] [] arr = new String[st1.length() * st2.length()][st1.length() * st2.length()];
 
-        String [] sum = new String[st1.length() + st2.length()];
+        String [] sum = new String[st1.length() * st2.length()];
 
 //        for (int i = 0; i < st1.length() + st2.length(); i++) {
 //            for (int j = 0; j < st1.length() + st2.length(); j++) {
@@ -57,11 +68,11 @@ public class Main1 {
 
 
         // adding
-        for (int x1 = st1.length() + st2.length() -1; x1 >= 0; x1--) {
+        for (int x1 = st1.length() * st2.length() -1; x1 >= 0; x1--) {
 
             int tempAdd = 0;
 
-            for (int y1 = 0; y1 < st1.length() + st2.length(); y1++) {
+            for (int y1 = 0; y1 < st1.length() * st2.length(); y1++) {
                 if (arr[y1][x1] != null) {
                     tempAdd += Integer.valueOf(arr[y1][x1]);
                 }
@@ -70,8 +81,8 @@ public class Main1 {
         }
 
         // check mas
-        for (int i = 0; i < st1.length() + st2.length(); i++) {
-            for (int j = 0; j < st1.length() + st2.length(); j++) {
+        for (int i = 0; i < st1.length() * st2.length(); i++) {
+            for (int j = 0; j < st1.length() * st2.length(); j++) {
                 if (arr[i][j] == null){
                     System.out.print('\t');
                 }else {
@@ -87,9 +98,16 @@ public class Main1 {
 
         sortSumm(sum);
 
+        boolean bool = false;
+
         System.out.println("Result : ");
         for (String s : result){
+            if (Integer.valueOf(s) == 0 && bool == false) {
+                continue;
+            } else {
+                bool = true;
             System.out.print(s);
+            }
         }
 
     }
