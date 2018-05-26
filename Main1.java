@@ -28,8 +28,7 @@ public class Main1 {
 
         int count = st1.length() * st2.length() -1;
 
-        int x = st1.length() * st2.length() -1;
-        int y = 0;
+
 
         String [] [] arr = new String[st1.length() * st2.length()][st1.length() * st2.length()];
 
@@ -42,8 +41,15 @@ public class Main1 {
 //        }
 
         // multiple
+
+        int x = st1.length() * st2.length() -1;
+        int y = 0;
+
         for (int i = arr1.length -1; i >= 0; i--) {
-            int stepx = 2;
+
+            int stepcount = 0;
+
+            int stepx = x;
             for (int j = arr2.length -1; j >= 0; j--) {
 
                 temp1 = Integer.valueOf(arr1[i]);
@@ -55,15 +61,18 @@ public class Main1 {
                     arr[y][x -1] = String.valueOf(temp3 / 10);
                 }
 
-                if (j == arr2.length -1){
+//                if (j == arr2.length -1){
+//                    x--;
+//                } else if(stepx > 0) {
+//                    stepx -=1;
+//                } else {
+//                    x--;
+//                }
                     x--;
-                } else if(stepx > 0) {
-                    stepx -=1;
-                } else {
-                    x--;
-                }
                     y++;
             }
+            stepcount++;
+            x = stepx - stepcount;
         }
 
 
@@ -117,7 +126,7 @@ public class Main1 {
         int temp = 0;
         boolean bool = true;
 
-        result= sum;
+        result = sum;
 
         for (int i = result.length -1; i >= 0; i--) {
             temp = Integer.valueOf(sum[i]);
