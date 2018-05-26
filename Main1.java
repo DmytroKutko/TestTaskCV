@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main1 {
 
     static String [] result;
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -28,20 +29,11 @@ public class Main1 {
 
         int count = st1.length() * st2.length() -1;
 
-
-
         String [] [] arr = new String[st1.length() * st2.length()][st1.length() * st2.length()];
 
         String [] sum = new String[st1.length() * st2.length()];
 
-//        for (int i = 0; i < st1.length() + st2.length(); i++) {
-//            for (int j = 0; j < st1.length() + st2.length(); j++) {
-//                arr[i][j]="";
-//            }
-//        }
-
         // multiple
-
         int x = st1.length() * st2.length() -1;
         int y = 0;
 
@@ -60,14 +52,6 @@ public class Main1 {
                 if (temp3 >= 10){
                     arr[y][x -1] = String.valueOf(temp3 / 10);
                 }
-
-//                if (j == arr2.length -1){
-//                    x--;
-//                } else if(stepx > 0) {
-//                    stepx -=1;
-//                } else {
-//                    x--;
-//                }
                     x--;
                     y++;
             }
@@ -100,10 +84,6 @@ public class Main1 {
             }
             System.out.println();
         }
-//        for (String s : sum){
-//            System.out.print(s + ",");
-//        }
-
 
         sortSumm(sum);
 
