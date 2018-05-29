@@ -44,7 +44,6 @@ public class Main3 {
         System.out.println("X" + '\t' + s2);
         System.out.println();
 
-
         for (int i = mas1.length - 1; i >= 0; i--) {
 
             tempResult = new  int[tx];
@@ -84,6 +83,8 @@ public class Main3 {
             System.out.println();
 
         }
+
+        System.out.println();
 
         sortSumm(res);
 
